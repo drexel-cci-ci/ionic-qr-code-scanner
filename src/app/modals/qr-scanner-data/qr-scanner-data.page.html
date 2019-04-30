@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>qr-scanner-data</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal(null).then()">
+        Close
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  {{qrCodeData}}
+</ion-content>

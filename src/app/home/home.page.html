@@ -1,14 +1,39 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content padding [class.show-qr-scanner]="isOn">
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  <div class="permission-access">
+    <h3>Enable Camera Access</h3>
+
+    <p>In order to use QR scanner, you need to enable camera access in your settings</p>
+
+    <ion-button shape="round" fill="outline" (click)="openSettings()">
+      Go to Settings
+    </ion-button>
   </div>
+
 </ion-content>
+
+
+<div class="scanner-focus-icon" *ngIf="isOn">
+  <div class="square"></div>
+</div>
+
+
+<div class="scanner-options" *ngIf="isOn">
+
+  <ion-toolbar>
+
+    <ion-button *ngIf="!isLightOn" (click)="enableLight()">
+      <ion-icon slot="icon-only" name="flash"></ion-icon>
+    </ion-button>
+
+    <ion-button *ngIf="isLightOn" (click)="disableLight()">
+      <ion-icon slot="icon-only" name="flash-off"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="reverseCamera()">
+      <ion-icon slot="icon-only" name="reverse-camera"></ion-icon>
+    </ion-button>
+
+  </ion-toolbar>
+
+</div>

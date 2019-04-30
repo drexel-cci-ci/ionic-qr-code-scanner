@@ -1,5 +1,7 @@
 {
   "name": "ionic-qr-code-scanner",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
