@@ -666,6 +666,11 @@ startScanner() {
 ```
 
 
+``
+Note: as you leave the page and go to the modal, ionViewWillLeave() will be called and destroy the scanner.
+If you do not have this, the scanner will continue to scan in the background.
+``
+
 Now, when you scan a QR code, a modal will pop up. Now, we will add stuff inside the modal. 
 
 Go to `./src/app/modals/qr-scanner-data.page.ts`. Write:
