@@ -77,7 +77,7 @@ npm install @ionic-native/qr-scanner
 Open to your `./src/app/app.module.ts` file and import `QRScanner`.
 
 
-```angular2
+```typescript
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -118,7 +118,7 @@ Import `QRScanner` and `QRScannerStatus` at the top of the file. `QRScannerStatu
 `QRScanner` returns. You will see how we use this later. Also, import `AlertController` to handle alerts.
 
 
-```angular2
+```typescript
 import {AlertController} from '@ionic/angular';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 ```
@@ -126,7 +126,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 Create a `QRScanner` and `AlertController` objects in the `constructor`. You might not have the `constructor` when you create the project
 in `home.page.ts`. Just write this inside the class:
 
-```angular2
+```typescript
 export class HomePage {
     constructor(
         private qrScanner: QRScanner,
@@ -140,7 +140,7 @@ Now, let's write couple helper functions for our QR Scanner.
 
 First, we will write `presentAlert()` and `presentAlertConfirm()` to handle error messages for the users: 
 
-```angular2
+```typescript
 async presentAlert(header, subHeader, message) {
     const alert = await this.alertController.create({
       header: header,
@@ -178,7 +178,7 @@ async presentAlertConfirm() {
 We will write a `startScanner()` function that will start our QR Scanner. Make sure you create a observable
 class variable `scannerSub`. Also, `QRScannerStatus` is resolved by `prepare()`. 
 
-```angular2
+```typescript
 scannerSub;
 
 // prepare and start scanner
@@ -225,7 +225,7 @@ Now, let's finish the rest of the helpers. `isOn` variable is a flag that tells 
 We will use this flag in the `html` template. `isLightOn` variable is a flag for flash light camera. `camera` variable
 indicates whether it is front or back camera.
 
-```angular2
+```typescript
 isOn = false;
 isLightOn = false;
 camera = 0;
@@ -271,7 +271,7 @@ Now, we are gonna use something called `Ionic life cycle methods`. You can learn
 We will use `ionViewWillEnter()` and `ionViewWillLeave()`.
 
 
-```angular2
+```typescript
 // called right before users enter the page
 ionViewWillEnter() {
     this.startScanner();
@@ -286,7 +286,7 @@ ionViewWillLeave() {
 
 When you are finished you should have:
 
-```angular2
+```typescript
 import { Component } from '@angular/core';
 import {AlertController} from '@ionic/angular';
 
@@ -445,7 +445,7 @@ I think most of these are self-explanatory. Please let me know if you have quest
 
 Open `./src/app/home/home.page.html` and write: 
 
-```angular2html
+```html
 <ion-content padding [class.show-qr-scanner]="isOn">
 
   <div class="permission-access">
@@ -579,7 +579,7 @@ ionic generate page modals/qr-scanner-data
 ```
 
 Go to `app.module.ts` and import the modal module:
-```angular2
+```typescript
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -620,7 +620,7 @@ export class AppModule {}
 
 Go to `home.page.ts` and import `ModalController`
 
-```angular2
+```typescript
 import {AlertController, ModalController} from '@ionic/angular';
 import {QrScannerDataPage} from '../modals/qr-scanner-data/qr-scanner-data.page';
 
@@ -676,7 +676,7 @@ Now, when you scan a QR code, a modal will pop up. Now, we will add stuff inside
 Go to `./src/app/modals/qr-scanner-data.page.ts`. Write:
 
 
-```angular2
+```typescript
 import {Component, Input, OnInit} from '@angular/core';
 import {ModalController, NavParams} from '@ionic/angular';
 
@@ -710,7 +710,7 @@ export class QrScannerDataPage implements OnInit {
 
 Open `qr-scanner-data.html`. Write:
 
-```angular2html
+```html
 <ion-header>
   <ion-toolbar>
     <ion-title>qr-scanner-data</ion-title>
